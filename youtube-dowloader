@@ -1,0 +1,23 @@
+# youtube-playlist-dowloader
+# Easy way to dowload all videos of a YouTube playlist
+
+# Instructions:
+
+# 1) Install pytube:     pip install --upgrade pytube
+# 2) Put the url of your target playlist on the variable named 'url'
+# 3) Run
+
+# Tested on Python3.10
+
+
+from pytube import Playlist # pip install --upgrade pytube
+
+# Created by Didac Fibla Escoto
+# https://github.com/Didacfibla
+
+url='https://www.youtube.com/playlist?list=PLWys0ZbXYUy4x2gR3LFDa0bZw4OZ1m8k-'
+p = Playlist(url)
+print(f'Downloading: {p.title}')
+for video in p.videos:
+    print("Dowloading {0}".format(video.title))
+    video.streams.get_highest_resolution().download()
