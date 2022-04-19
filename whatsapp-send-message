@@ -1,0 +1,24 @@
+import pywhatkit, datetime, sys, time
+
+now = datetime.datetime.now()
+
+phone = "+34XXXXXXXXX"
+
+
+def send_message(number, message, hour, minutes):
+    try:
+        pywhatkit.sendwhatmsg(number, message, hour, minutes)
+        print("Mensaje Enviado")
+
+    except Exception:
+        print("Ocurrio Un Error")
+
+
+if __name__ == "__main__":
+
+    current_time = now.strftime("%H:%M:%S").split(":")
+    current_hour = int(current_time[0])
+    current_min = int(current_time[1])
+
+    mensaje = f"Son las {current_hour}:{current_min}"
+    send_message(phone, mensaje, current_hour, current_min + 1)
